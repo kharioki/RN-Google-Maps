@@ -7,12 +7,11 @@ const Home = ({navigation}) => {
       <Text style={styles.title}>Coding with Kharioki</Text>
       <Text style={styles.body}>
         This app shows us how to use Google maps in react native for both
-        android and iOS. Here we focus on features like Markers, callouts,
-        polygons, and circle components.
+        android and iOS.
       </Text>
       <Button
-        title="Go to Carousel Map"
-        onPress={() => console.log('go to carousel')}
+        title="Go to Playground"
+        onPress={() => navigation.navigate('Playground')}
       />
       <Button
         title="Go to Heat Map"

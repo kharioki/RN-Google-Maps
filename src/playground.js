@@ -1,9 +1,9 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
-import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
+import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
 
-const coordinates = [
+const markers = [
   {name: '1', latitude: 37.8025259, longitude: -122.4351431},
   {name: '2', latitude: 37.7896386, longitude: -122.421646},
   {name: '3', latitude: 37.7665248, longitude: -122.4161628},
@@ -22,20 +22,20 @@ export default function Playground() {
         longitude: -122.4324,
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421,
-      }}
-    />
+      }}>
+      {markers.map(marker => (
+        <Marker
+          key={marker.name}
+          coordinate={{latitude: marker.latitude, longitude: marker.longitude}}
+          title={marker.name}
+          description={marker.name}
+        />
+      ))}
+    </MapView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 40,
-  },
   map: {
     height: '100%',
   },

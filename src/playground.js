@@ -1,7 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
 
-import MapView, {PROVIDER_GOOGLE, Marker, Callout} from 'react-native-maps';
+import MapView, {
+  PROVIDER_GOOGLE,
+  Marker,
+  Callout,
+  Polygon,
+} from 'react-native-maps';
 
 const markers = [
   {name: '1', latitude: 37.8025259, longitude: -122.4351431},
@@ -13,6 +18,7 @@ const markers = [
 ];
 
 export default function Playground() {
+  const [coordinates, setCoordinates] = useState(markers);
   return (
     <MapView
       style={styles.map}
@@ -23,18 +29,19 @@ export default function Playground() {
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421,
       }}>
-      {markers.map(marker => (
-        <Marker
-          key={marker.name}
-          coordinate={{latitude: marker.latitude, longitude: marker.longitude}}
-          title={marker.name}
-          description={marker.name}>
-          <Callout>
-            <Image source={require('./img/sushi.png')} height={50} />
-            <Text>An Interesting callout</Text>
-          </Callout>
-        </Marker>
-      ))}
+      <Polygon
+        coordinates={coordinates}
+        fillColor={'rgba(100, 200, 200, 0.3)'}
+        strokeColor={'rgba(100, 200, 200, 0.3)'}
+      />
+      <Marker
+        draggable
+        coordinate={{latitude: 37.7825259, longitude: -122.4351431}}>
+        <Callout>
+          <Image source={require('./img/sushi.png')} />
+          <Text>An Interesting callout</Text>
+        </Callout>
+      </Marker>
     </MapView>
   );
 }

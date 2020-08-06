@@ -6,6 +6,7 @@ import MapView, {
   Marker,
   Callout,
   Polygon,
+  Circle,
 } from 'react-native-maps';
 
 const markers = [
@@ -31,9 +32,17 @@ export default function Playground() {
       }}>
       <Polygon
         coordinates={coordinates}
-        fillColor={'rgba(100, 200, 200, 0.3)'}
-        strokeColor={'rgba(100, 200, 200, 0.3)'}
+        fillColor={'rgba(200, 50, 100, 0.3)'}
+        strokeColor={'rgba(200, 50, 100, 0.3)'}
       />
+
+      <Circle
+        center={{latitude: 37.8025259, longitude: -122.4351431}}
+        radius={1000}
+        fillColor={'rgba(100, 200, 200, 0.5)'}
+        strokeColor={'rgba(100, 200, 200, 0.5)'}
+      />
+
       <Marker
         draggable
         coordinate={{latitude: 37.7825259, longitude: -122.4351431}}>

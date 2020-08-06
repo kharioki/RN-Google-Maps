@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
-import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
+import MapView, {PROVIDER_GOOGLE, Marker, Callout} from 'react-native-maps';
 
 const markers = [
   {name: '1', latitude: 37.8025259, longitude: -122.4351431},
@@ -28,8 +28,11 @@ export default function Playground() {
           key={marker.name}
           coordinate={{latitude: marker.latitude, longitude: marker.longitude}}
           title={marker.name}
-          description={marker.name}
-        />
+          description={marker.name}>
+          <Callout>
+            <Text>An Interesting callout</Text>
+          </Callout>
+        </Marker>
       ))}
     </MapView>
   );
